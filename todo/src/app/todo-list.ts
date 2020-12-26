@@ -10,7 +10,7 @@ export class TodoList {
         return this.todoItems;
     }
 
-    addItems(task: string) {
+    addItem(task: string) {
         this.todoItems.push(new TodoItem(task));
     }
 

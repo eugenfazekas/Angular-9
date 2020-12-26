@@ -21,6 +21,22 @@ export class AppComponent {
   }
 
   get itemCount(): number {
-    return this.list.items.filter(item => !item.complete).length;
+    return this.items.length;
+    //return this.items.filter(item => !item.complete).length;
   }
+
+  get items(): readonly TodoItem[] {
+    let array = this.list.items.filter(item => this.showComplete || !item.complete);
+    console.log(array);
+    return array;
+  }
+
+  addItem(newItem){
+    if(newItem != ""){
+      this.list.addItem(newItem);
+    }
+  }
+
+  showComplete: boolean = false;
+
 }
