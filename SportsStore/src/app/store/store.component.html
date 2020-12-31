@@ -12,10 +12,13 @@
           Home
         </button>
         <button *ngFor="let cat of categories" 
-             class="btn btn-outline-primary btn-block"
-             [class.active]="cat == selectedCategory" (click)="changeCategory(cat)">
+            class="btn btn-outline-primary btn-block"
+            [class.active]="cat == selectedCategory" (click)="changeCategory(cat)">
           {{cat}}
         </button>
+        <button class="btn btn-block btn-danger mt-5" routerLink="/admin">
+            Admin
+          </button>    
       </div>
   
       <div class="col-9 p-2">
@@ -28,7 +31,9 @@
           </h4>
           <div class="card-text bg-white p-1">
             {{product.description}}
-            <button class="btn btn-success btn-sm float-right" (click)="addProductToCart(product)">Add to cart
+            <button class="btn btn-success btn-sm float-right"
+                    (click)="addProductToCart(product)">
+              Add To Cart
             </button>
           </div>
         </div>
