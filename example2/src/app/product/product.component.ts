@@ -31,7 +31,6 @@ export class ProductComponent {
   }
 
   getProductCount(): number {
-      console.log('getProductCount invoked');
       return this.getProducts().length;
   }
 
