@@ -1,0 +1,67 @@
+<div class="row m-2">
+    <div class="col-4">
+        <form class="m-2" novalidate (ngSubmit)="submitForm()">
+          <div class="form-group">
+              <label>Name</label>
+              <input class="form-control" name="name" [(ngModel)]="newProduct.name" />
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <input class="form-control" name="category" 
+                [(ngModel)]="newProduct.category" />
+          </div>      
+          <div class="form-group">
+            <label>Price</label>
+            <input class="form-control" name="price" [(ngModel)]="newProduct.price" />
+          </div>      
+          <button class="btn btn-primary" type="submit">Create</button>
+        </form>
+      </div>
+        
+    <div class="col-8">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" [(ngModel)]="showTable" />
+                    Show Table
+                </label>
+                <label>
+                    <input type="checkbox" [(ngModel)]="darkColor" />
+                    Dark Cell Color
+                </label>
+            </div>
+    </div>
+
+    <!-- <ng-template [nxIf]="showTable"> -->
+        <!-- <table *nxIf="showTable" class="table table-sm table-bordered table-striped">
+            <tr><th></th><th>Name</th><th>Category</th><th>Price</th></tr>
+            <tr *ngFor="let item of getProducts(); let i = index" 
+                [nx-attr]="getProducts().length < 6 ? 'bg-success' : 'bg-warning' " 
+                [nx-product] ="item" (nx-category)="newProduct.category = $event ">
+                <td>{{i + 1}}</td>
+                <td>{{item.name}}</td>
+                <td  [nx-attr]="item.category == 'Soccer' ? 'bg-info' : null ">{{item.category}}</td>
+                <td  [nx-attr]="'bg-info'">{{item.price}}</td>
+            </tr>
+        </table> -->
+
+            <table *nxIf="showTable" class="table table-sm table-bordered table-striped" [nxCellDarkColor]="darkColor">
+            <thead>
+                <tr><th></th><th>Name</th><th>Category</th><th>Price</th></tr>
+            </thead>
+            <tbody>
+                  <tr *nxFor=" let item of getProducts(); let  i = index; let odd = odd; let even = even"
+                   [class.bg-info]="odd" [class.bg-warning]="even">
+                        <td style="vertical-align:middle">{{ i + 1}}</td>
+                        <td style="vertical-align:middle">{{item.name}}</td>
+                        <td style="vertical-align:middle">{{item.category}}</td>
+                        <td style="vertical-align:middle">{{item.price}}</td>
+                        <td class="text-center">
+                            <button class="btn btn-danger btn-sm" (click)="deleteProduct(item.id)">Delete</button>
+                        </td>
+                    </tr>
+             </tbody>
+        </table>
+    <!-- </ng-template> -->
+    </div>
+   
+
