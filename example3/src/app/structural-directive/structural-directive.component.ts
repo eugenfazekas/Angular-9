@@ -20,7 +20,7 @@ export class StructuralDirectiveComponent {
 }
 
 getProducts(): Product[] {
-    return this.model.getProducts();
+     return this.model.getProducts();
 }
 
 newProduct: Product = new Product();
@@ -33,8 +33,13 @@ deleteProduct(key: number) {
     this.model.deleteProduct(key);
 }
 
+getProductsList(){
+  this.model.getProductList();
+}
+
 submitForm() {
     this.addProduct(this.newProduct);
-} 
+    this.newProduct = new Product();
+ }
 
 }

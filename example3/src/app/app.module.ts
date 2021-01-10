@@ -12,6 +12,10 @@ import { NxStructureDirective } from './shared/structure.directive';
 import { NxIteratorDirective } from './shared/iterator.directive';
 import { NxCellColor } from './shared/cellColor.directive';
 import { NxCellColorSwitcher } from './shared/cellColorSwitcher.directive';
+import { TestComponentComponent } from './test-component/test-component.component';
+import { ProductTableComponent } from './test-components/product-table/product-table.component';
+import { ProductFormComponent } from './test-components/product-form/product-form.component';
+import { ToggleViewComponent } from './test-components/toggle-view/toggle-view.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { NxCellColorSwitcher } from './shared/cellColorSwitcher.directive';
     NxStructureDirective,
     NxIteratorDirective,
     NxCellColor,
-    NxCellColorSwitcher
+    NxCellColorSwitcher,
+    TestComponentComponent,
+    ProductTableComponent,
+    ProductFormComponent,
+    ToggleViewComponent
   ],
   imports: [
     BrowserModule,
