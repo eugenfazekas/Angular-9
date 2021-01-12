@@ -9,7 +9,9 @@ import { Product } from '../model/product.model';
 })
 export class ReactiveFormComponent  {
 
-  model: Model = new Model();
+  //model: Model = new Model();
+
+  constructor(public model: Model){}
 
   formGroup: ProductFormGroup = new ProductFormGroup();
 

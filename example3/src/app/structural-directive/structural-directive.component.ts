@@ -10,10 +10,12 @@ import { Model } from '../data/repository.model';
 })
 export class StructuralDirectiveComponent {
 
-  model: Model = new Model();
+  // model: Model = new Model();
   formGroup: ProductFormGroup = new ProductFormGroup();
   showTable: boolean = false;
   darkColor: boolean = false;
+
+  constructor(public model: Model){}
 
   getProduct(key: number): Product {
     return this.model.getProduct(key);

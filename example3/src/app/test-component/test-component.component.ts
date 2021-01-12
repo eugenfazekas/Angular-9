@@ -10,7 +10,9 @@ import { Product } from '../model/product.model';
 })
 export class TestComponentComponent {
 
-  model: Model = new Model();
+  //model: Model = new Model();
+
+  constructor(public model: Model){}
 
   addProduct(p: Product) {
      this.model.saveProduct(p);

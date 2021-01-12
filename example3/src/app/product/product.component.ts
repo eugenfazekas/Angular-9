@@ -9,11 +9,11 @@ import { Model } from '../data/repository.model';
 })
 export class ProductComponent {
 
-  model: Model = new Model();
+  //model: Model = new Model();
   
   targetName: string = "Kayak";
 
-  constructor(ref: ApplicationRef) {
+  constructor(public model: Model,ref: ApplicationRef) {
       (<any>window).appRef = ref;
       (<any>window).model = this.model;
   }

@@ -18,6 +18,13 @@ import { ProductFormComponent } from './test-components/product-form/product-for
 import { ToggleViewComponent } from './test-components/toggle-view/toggle-view.component';
 import { NxAddTaxPipe } from './shared/add-tax.pipe';
 import { NxCategoryFilterPipe } from './shared/category-filter.pipe';
+import { DiscountDisplayComponent } from './test-components/discount-display/discount-display.component';
+import { DiscountEditorComponent } from './test-components/discount-editor/discount-editor.component';
+import { DiscountService } from './shared/discount-service';
+import { NxDiscountPipe } from './shared/discount.pipe';
+import { NxDiscountAmountDirective } from './shared/discount-amount.directive';
+import { SimpleDataSource } from './data/datasource.model';
+import { Model } from './data/repository.model';
 
 @NgModule({
   declarations: [
@@ -36,14 +43,18 @@ import { NxCategoryFilterPipe } from './shared/category-filter.pipe';
     ProductFormComponent,
     ToggleViewComponent,
     NxAddTaxPipe,
-    NxCategoryFilterPipe
+    NxCategoryFilterPipe,
+    DiscountDisplayComponent,
+    DiscountEditorComponent,
+    NxDiscountPipe,
+    NxDiscountAmountDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DiscountService,SimpleDataSource,Model],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
