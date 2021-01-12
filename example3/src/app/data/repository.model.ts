@@ -4,14 +4,12 @@ import { SimpleDataSource } from "./datasource.model";
 export class Model {
     private dataSource: SimpleDataSource;
     private products: Product[];
-    //private lastItemId:number
     private locator = (p: Product, id: number) => p.id == id;
 
     constructor() {
         this.dataSource = new SimpleDataSource();
         this.products = new Array<Product>();
         this.dataSource.getData().forEach(p => this.products.push(p));
-        //this.lastItemId = this.products[this.products.length -1].id+1;
     }
 
     getProducts(): Product[] {
@@ -29,9 +27,25 @@ export class Model {
        }
     }
 
-    getLastProductItemId(){
+    getCategories() {
+        let items = this.products;
+        let categories: string[] = []
+            for (let i = 0; i < items.length; i++) {
+                categories.push(items[i].category);
+       }
+        let categoriesSet  = new Set(categories);
+       return categoriesSet;
+    }
+
+    getLastProductItemId(): number {
         let lastId = this.products[this.products.length -1].id+1;
         return lastId;
+    }
+
+    getProductsLength() {
+        console.log(this.products.length);
+        let length = this.getProducts().length;
+        return length;
     }
 
     saveProduct(product: Product) {

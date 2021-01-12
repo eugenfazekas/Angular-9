@@ -59,8 +59,7 @@ class NxIteratorContext {
     first: boolean; last: boolean;
     view: ViewRef;
 
-    constructor(public $implicit: any,
-            public position: number, total: number ) {
+    constructor(public $implicit: any, public position: number, total: number ) {
         this.setData(position, total);
     }
 

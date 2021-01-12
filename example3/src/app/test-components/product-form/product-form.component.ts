@@ -4,8 +4,8 @@ import { Product } from 'src/app/model/product.model';
 @Component({
   selector: 'app-product-form',
   templateUrl: 'product-form.component.html',
-  styleUrls: ['product-form.component.css'],
-  encapsulation: ViewEncapsulation.Emulated
+  //styleUrls: ['product-form.component.css'],
+  //encapsulation: ViewEncapsulation.Emulated
 })
 export class ProductFormComponent {
 

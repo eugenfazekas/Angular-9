@@ -16,6 +16,8 @@ import { TestComponentComponent } from './test-component/test-component.componen
 import { ProductTableComponent } from './test-components/product-table/product-table.component';
 import { ProductFormComponent } from './test-components/product-form/product-form.component';
 import { ToggleViewComponent } from './test-components/toggle-view/toggle-view.component';
+import { NxAddTaxPipe } from './shared/add-tax.pipe';
+import { NxCategoryFilterPipe } from './shared/category-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ToggleViewComponent } from './test-components/toggle-view/toggle-view.c
     TestComponentComponent,
     ProductTableComponent,
     ProductFormComponent,
-    ToggleViewComponent
+    ToggleViewComponent,
+    NxAddTaxPipe,
+    NxCategoryFilterPipe
   ],
   imports: [
     BrowserModule,

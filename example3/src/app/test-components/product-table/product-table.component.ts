@@ -9,6 +9,8 @@ import { NxCellColor } from 'src/app/shared/cellColor.directive';
 })
 export class ProductTableComponent {
 
+  showTable: boolean = true;
+
   @Input("model")
   dataModel: Model;
 
@@ -20,12 +22,34 @@ export class ProductTableComponent {
     return this.dataModel.getProducts();
   }
 
+  getCategories() {
+    return this.dataModel.getCategories();
+  }
+
   deleteProduct(key: number) {
     return this.dataModel.deleteProduct(key);
   }
 
-  showTable: boolean = true;
+  taxRate: number = 0;
+  categoryFilter: string = 'All Categories';
+  itemCount: number = 5;
 
+  dateObject: Date = new Date(2020,1,20);
+  dateString: string = '2020-02-20T00:00:00.000Z';
+  dateNumber: number = 1582156800000;
+
+  selectMap = {
+    "Watersports": "stay dry",
+    "Soccer":"score goals",
+    "other":"have fun"
+  }
+
+  numberMap = {
+    "=1":"one product",
+    "=2":"two products",
+    "other":"# products"
+  }
+/*
   @ViewChildren(NxCellColor)
   viewChildren: QueryList<NxCellColor>;
 
@@ -42,4 +66,5 @@ export class ProductTableComponent {
       })
     },0)
   }
+  */
 }

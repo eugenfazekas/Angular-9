@@ -6,7 +6,7 @@ import { Product } from '../model/product.model';
 @Component({
   selector: 'app-test-component',
   templateUrl: './test-component.component.html',
-  styles: ['/deep/ div { border: 2px black solid; font-style:italic}']
+  //styles: ['/deep/ div { border: 2px black solid; font-style:italic}']
 })
 export class TestComponentComponent {
 
