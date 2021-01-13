@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Model } from '../data/repository.model';
-import { Product } from '../model/product.model';
+import { Model } from '../../shared/repository.model';
+import { Product } from '../../model/product.model';
 
 
 @Component({
-  selector: 'app-test-component',
-  templateUrl: './test-component.component.html',
+  selector: 'app-product-component',
+  templateUrl: './product-component.component.html',
   //styles: ['/deep/ div { border: 2px black solid; font-style:italic}']
 })
-export class TestComponentComponent {
+export class ProductComponent {
 
   //model: Model = new Model();
 

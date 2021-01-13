@@ -1,7 +1,7 @@
 import { Component, Input, ViewChildren, QueryList } from '@angular/core';
-import { Model } from 'src/app/data/repository.model';
-import { Product } from 'src/app/model/product.model';
-import { NxCellColor } from 'src/app/shared/cellColor.directive';
+import { Model } from 'src/app/product/shared/repository.model';
+import { Product } from 'src/app/product/model/product.model';
+import { NxCellColor } from 'src/app/common/Directives/cellColor.directive';
 
 @Component({
   selector: 'app-product-table',

@@ -1,5 +1,5 @@
 import { Pipe,Injectable } from '@angular/core';
-import { DiscountService } from './discount-service';
+import { DiscountService } from '../shared/discount-service';
 
 @Pipe({
     name: "discount",

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DiscountService } from 'src/app/shared/discount-service';
+import { DiscountService } from 'src/app/product/shared/discount-service';
 
 @Component({
   selector: 'app-discount-display',

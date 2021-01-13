@@ -5,7 +5,7 @@ import { Directive, ElementRef, Attribute, Input, Output, SimpleChange, EventEmi
     exportAs: "nxModel"
 })
 
-export class NxModel {
+export class NxTwoWayDirective {
 
     direction: string = "None";
 

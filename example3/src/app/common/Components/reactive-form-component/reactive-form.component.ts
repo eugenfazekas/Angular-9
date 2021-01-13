@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Model } from '../data/repository.model';
-import { ProductFormGroup } from '../model/reactive-form.model';
-import { Product } from '../model/product.model';
+import { Model } from '../../../product/shared/repository.model';
+import { ProductFormGroup } from '../../utils/reactive-form.model';
+import { Product } from '../.././../product/model/product.model';
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',

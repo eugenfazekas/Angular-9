@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Product } from '../model/product.model';
-import { ProductFormGroup } from '../model/reactive-form.model';
-import { Model } from '../data/repository.model';
+import { Model } from '../../../product/shared/repository.model';
+import { ProductFormGroup } from '../../utils/reactive-form.model';
+import { Product } from '../.././../product/model/product.model';
 
 @Component({
   selector: 'app-structural-directive',
