@@ -1,3 +1,3 @@
 # Angular-9 Practice Examples
 
-### by Adam Freeman
+### inspired by Adam Freeman
