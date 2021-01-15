@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { SharedState, MODES } from '../shared-state.model';
+import { Component, Inject } from '@angular/core';
+import { SharedState, MODES, SHARED_STATE } from '../shared-state.model';
 import { Model } from 'src/app/model/model.repository';
 import { Product } from 'src/app/model/product.model';
+import { Observer } from 'rxjs';
 
 @Component({
   selector: 'nx-table',
@@ -10,7 +11,7 @@ import { Product } from 'src/app/model/product.model';
 })
 export class TableComponent{
 
-  constructor(private model: Model, private state: SharedState) { }
+  constructor(private model: Model, @Inject(SHARED_STATE) public observer: Observer<SharedState>) { }
 
   getProduct(key: number) {
     return this.model.getProduct(key);
@@ -25,12 +26,10 @@ export class TableComponent{
   }
 
   editProduct(key: number) {
-    this.state.id = key;
-    this.state.mode = MODES.EDIT;
+    this.observer.next(new SharedState(MODES.EDIT, key));
   }
 
   createProduct() {
-    this.state.id = undefined;
-    this.state.mode = MODES.CREATE;
+    this.observer.next(new SharedState(MODES.CREATE));
   }
 }
