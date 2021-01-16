@@ -7,7 +7,7 @@ import { FormComponent } from './core/form/form.component';
 import { MessageComponent } from './messages/message/message.component';
 import { ModelModule } from './model/model.module';
 import { CoreModule } from './core/core.module';
-import { MessageModule } from './messages/core.module';
+import { MessageModule } from './messages/message.module';
 
 @NgModule({
   imports: [

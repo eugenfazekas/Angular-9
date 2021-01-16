@@ -4,6 +4,7 @@ import { SharedState, MODES, SHARED_STATE } from '../shared-state.model';
 import { NgForm } from '@angular/forms';
 import { Product } from 'src/app/model/product.model';
 import { Observable } from 'rxjs';
+import { skipWhile, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'nx-form',
@@ -17,14 +18,20 @@ export class FormComponent {
 
   constructor(private model: Model, 
               @Inject(SHARED_STATE) public stateEvents: Observable<SharedState>) { 
-                  stateEvents.subscribe((update) => {
+
+                stateEvents
+                .pipe(skipWhile(state => state.mode == MODES.EDIT))
+                .pipe(distinctUntilChanged((firstState, secondState) =>
+                    firstState.mode == secondState.mode 
+                        && firstState.id == secondState.id))
+                .subscribe(update => {
                     this.product = new Product();
-                    if(update.id != undefined) {
-                      Object.assign(this.product, this.model.getProduct(update.id));
+                    if (update.id != undefined) {
+                        Object.assign(this.product, this.model.getProduct(update.id));
                     }
-                    this.editing = update.mode == MODES.EDIT;
-                  })
-              }
+                    this.editing = update.mode == MODES.EDIT;     
+                });
+        }
 
      editing: boolean = false;    
 
