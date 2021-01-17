@@ -11,7 +11,8 @@ import { Observer } from 'rxjs';
 })
 export class TableComponent{
 
-  constructor(private model: Model, @Inject(SHARED_STATE) public observer: Observer<SharedState>) { }
+  constructor(private model: Model,
+    /* @Inject(SHARED_STATE) public observer: Observer<SharedState>*/) { }
 
   getProduct(key: number) {
     return this.model.getProduct(key);
@@ -25,6 +26,7 @@ export class TableComponent{
      return this.model.deleteProduct(key);
   }
 
+  /*
   editProduct(key: number) {
     this.observer.next(new SharedState(MODES.EDIT, key));
   }
@@ -32,4 +34,5 @@ export class TableComponent{
   createProduct() {
     this.observer.next(new SharedState(MODES.CREATE));
   }
+  */
 }

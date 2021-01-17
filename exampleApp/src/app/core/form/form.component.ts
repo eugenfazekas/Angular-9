@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { Product } from 'src/app/model/product.model';
 import { Observable } from 'rxjs';
 import { skipWhile, distinctUntilChanged } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'nx-form',
@@ -16,6 +17,27 @@ export class FormComponent {
   product: Product = new Product();
   //lastId: number;
 
+  constructor(private model: Model, activateRoute: ActivatedRoute, private router: Router) {
+
+    this.editing = activateRoute.snapshot.params["mode"] == "edit";
+    let id = activateRoute.snapshot.params["id"];
+    if(id != null) {
+      let name = activateRoute.snapshot.params["name"];
+      let category = activateRoute.snapshot.params["category"];
+      let price = activateRoute.snapshot.params["price"];
+
+      if(name != null && category != null && price) {
+          this.product.id = id;
+          this.product.name = name;
+          this.product.category = category;
+          this.product.price = price;
+        } else {
+      Object.assign(this.product, model.getProduct(id) || new Product());
+        }
+    }
+  }
+
+  /*
   constructor(private model: Model, 
               @Inject(SHARED_STATE) public stateEvents: Observable<SharedState>) { 
 
@@ -32,14 +54,15 @@ export class FormComponent {
                     this.editing = update.mode == MODES.EDIT;     
                 });
         }
-
+*/
      editing: boolean = false;    
 
     submitForm(form: NgForm) {
       if(form.valid) {
         this.model.saveProduct(this.product);
-        this.product = new Product();
-        form.reset;
+        //this.product = new Product();
+        //form.reset();
+        this.router.navigateByUrl("/")
       }
     }
 
