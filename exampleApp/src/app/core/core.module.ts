@@ -12,13 +12,18 @@ import { Model } from '../model/model.repository';
 import { Message } from '../messages/message.model';
 import { MessageModule } from '../messages/message.module';
 import { RouterModule } from '@angular/router';
+import { ProductCountComponent } from './product-count/product-count.component';
+import { CategoryCountComponent } from './category-count/category-count.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { UnsavedGuard } from './unsaved.guard';
 
 @NgModule({
     imports: [BrowserModule, FormsModule, ModelModule, MessageModule, RouterModule],
-    declarations: [TableComponent, FormComponent, StatePipe],
+    declarations: [TableComponent, FormComponent, StatePipe, ProductCountComponent, CategoryCountComponent, NotFoundComponent],
     exports: [ModelModule, TableComponent, FormComponent],
-    /*
-    providers: [{
+    
+    providers: [UnsavedGuard
+        /*{
         provide: SHARED_STATE,
         deps: [MessageService, Model],
         useFactory: (messageService, model) => {
@@ -30,6 +35,7 @@ import { RouterModule } from '@angular/router';
                  );
              return subject;       
         }
-     }]*/
+     }*/
+    ]
 })
 export class CoreModule { }

@@ -3,6 +3,7 @@ import { SharedState, MODES, SHARED_STATE } from '../shared-state.model';
 import { Model } from 'src/app/model/model.repository';
 import { Product } from 'src/app/model/product.model';
 import { Observer } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'nx-table',
@@ -11,15 +12,28 @@ import { Observer } from 'rxjs';
 })
 export class TableComponent{
 
-  constructor(private model: Model,
-    /* @Inject(SHARED_STATE) public observer: Observer<SharedState>*/) { }
+  category: string = null;
+
+  constructor(private model: Model, activeRoute: ActivatedRoute
+    /* @Inject(SHARED_STATE) public observer: Observer<SharedState>*/) { 
+      activeRoute.params.subscribe(params => {
+        this.category = params["category"] || null;
+      })
+    }
 
   getProduct(key: number) {
     return this.model.getProduct(key);
   }
 
   getProducts(): Product[] {
-     return this.model.getProducts();
+    return this.model.getProducts()
+        .filter(p => this.category == null || p.category == this.category);
+  }
+
+  get categories(): string[] {
+      return this.model.getProducts()
+          .map(p => p.category)
+          .filter((category, index, array) => array.indexOf(category) == index);
   }
 
   deleteProduct(key: number) {

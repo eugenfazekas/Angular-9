@@ -15,26 +15,36 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class FormComponent {
 
   product: Product = new Product();
+  originalProduct: Product = new Product();
   //lastId: number;
 
-  constructor(private model: Model, activateRoute: ActivatedRoute, private router: Router) {
+  constructor(public model: Model, activateRoute: ActivatedRoute, private router: Router) {
+    
+    activateRoute.params.subscribe(params => {
+        this.editing = params["mode"] == "edit";
+        let id = params["id"];
 
-    this.editing = activateRoute.snapshot.params["mode"] == "edit";
-    let id = activateRoute.snapshot.params["id"];
-    if(id != null) {
-      let name = activateRoute.snapshot.params["name"];
-      let category = activateRoute.snapshot.params["category"];
-      let price = activateRoute.snapshot.params["price"];
+          if(id != null) {
+            Object.assign(this.product, model.getProduct(id) || new Product());
+            Object.assign(this.originalProduct, this.product);
+          }
+        /*
+        if(id != null) {
+          let name = activateRoute.snapshot.params["name"];
+          let category = activateRoute.snapshot.params["category"];
+          let price = activateRoute.snapshot.params["price"];
 
-      if(name != null && category != null && price) {
-          this.product.id = id;
-          this.product.name = name;
-          this.product.category = category;
-          this.product.price = price;
-        } else {
-      Object.assign(this.product, model.getProduct(id) || new Product());
-        }
-    }
+          if(name != null && category != null && price) {
+              this.product.id = id;
+              this.product.name = name;
+              this.product.category = category;
+              this.product.price = price;
+            } else {
+          Object.assign(this.product, model.getProduct(id) || new Product());
+            }
+            
+        }*/
+      })
   }
 
   /*
@@ -60,16 +70,17 @@ export class FormComponent {
     submitForm(form: NgForm) {
       if(form.valid) {
         this.model.saveProduct(this.product);
+        this.originalProduct = this.product;
         //this.product = new Product();
         //form.reset();
         this.router.navigateByUrl("/")
       }
     }
-
+/*
     resetForm() {
       this.product = new Product();
     }
-
+*/
     // ngDoCheck() {
     //   if (this.lastId != this.state.id) {
     //         this.product = new Product();
