@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { TermsGuard } from './terms.guard';
 import { LoadGuard } from './load.guard';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   imports: [
@@ -20,7 +20,8 @@ import { LoadGuard } from './load.guard';
     ModelModule,
     CoreModule,
     MessageModule,
-    routing
+    routing,
+    BrowserAnimationsModule
   ],
   declarations:[
     AppComponent,

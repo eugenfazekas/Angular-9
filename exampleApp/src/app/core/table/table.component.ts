@@ -4,15 +4,17 @@ import { Model } from 'src/app/model/model.repository';
 import { Product } from 'src/app/model/product.model';
 import { Observer } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { HighlightTrigger } from '../table.animations';
 
 @Component({
   selector: 'nx-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  animations: [ HighlightTrigger ]
 })
 export class TableComponent{
 
   category: string = null;
+  highlightCategory = "";
 
   constructor(private model: Model, activeRoute: ActivatedRoute
     /* @Inject(SHARED_STATE) public observer: Observer<SharedState>*/) { 
@@ -38,6 +40,10 @@ export class TableComponent{
 
   deleteProduct(key: number) {
      return this.model.deleteProduct(key);
+  }
+
+  getRowState(category: string) {
+    return this.highlightCategory == ""  ?  "" : this.highlightCategory == category ? "selected" : "notselected";
   }
 
   /*
