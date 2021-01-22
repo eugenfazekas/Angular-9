@@ -12,7 +12,9 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { TermsGuard } from './terms.guard';
 import { LoadGuard } from './load.guard';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TestComponent } from './tests/test/test.component';
+import { Test2Component } from './tests/test2/test2.component'
 
 @NgModule({
   imports: [
@@ -25,6 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
   ],
   declarations:[
     AppComponent,
+    TestComponent,
+    Test2Component,
   ],
   providers:[
     TermsGuard,
